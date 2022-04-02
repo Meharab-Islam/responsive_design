@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:responsive_design/model/questions.dart';
 import 'package:responsive_design/widgets/web_dialoge.dart';
 
 class SmallWebScreen extends StatefulWidget {
@@ -101,7 +102,7 @@ class _SmallWebScreenState extends State<SmallWebScreen> {
                               padding: EdgeInsets.all(15.sp),
                               child: Center(
                                 child: Text(
-                                  'Loading....',
+                                  questionLists[list_ind],
                                   style: TextStyle(
                                       fontSize: 32.sp, color: maximumColor),
                                   textAlign: TextAlign.center,
@@ -158,7 +159,31 @@ class _SmallWebScreenState extends State<SmallWebScreen> {
                                     width: 10.w,
                                   ),
                                   Bounceable(
-                                    onTap: () {},
+                                    onTap: () {
+                                      if (list_ind <
+                                          (questionLists.length - 1)) {
+                                        setState(() {
+                                          list_ind++;
+                                        });
+                                      } else {
+                                        Get.snackbar('', '',
+                                            colorText: Colors.white,
+                                            snackStyle: SnackStyle.FLOATING,
+                                            titleText: Text(
+                                              'List finished',
+                                              style: TextStyle(fontSize: 16.sp),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            snackPosition: SnackPosition.BOTTOM,
+                                            maxWidth: 200.w,
+                                            backgroundColor: maximumColor,
+                                            animationDuration:
+                                                Duration(seconds: 1),
+                                            duration:
+                                                Duration(milliseconds: 1500),
+                                            isDismissible: true);
+                                      }
+                                    },
                                     child: Container(
                                       decoration: BoxDecoration(
                                           borderRadius:

@@ -1,4 +1,5 @@
- List questionLists = [
+int list_ind = 0;
+List questionLists = [
   'What are your favorit family vacation memories?',
   'Did you have a vest firend, and if so, how did that relationship play out cover the coures of your life?',
   'How did you enjoy working?',
